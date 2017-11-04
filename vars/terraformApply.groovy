@@ -5,6 +5,8 @@ def call(body) {
     body.delegate = config
     body()
 
+    print "${config.plan_info}"
+
     node {
 
         stage ('Apply') {
@@ -16,7 +18,7 @@ def call(body) {
             // Run Apply
             sh 'pip3 install -r terraform_enterprise_2/run_jobs/requirements.txt'
             
-            sh "set +e; python3 terraform_enterprise_2/run_jobs/run_terraform_apply.py \'${config.org}\' \'${config.app_id}\' \'${config.workspace}\' \'${config.plan_info['run_id']}\' \'${config.destroy_flag}\' \'${config.tf_token}\'"
+            // sh "set +e; python3 terraform_enterprise_2/run_jobs/run_terraform_apply.py \'${config.org}\' \'${config.app_id}\' \'${config.workspace}\' \'${config.plan_info.run_id}\' \'${config.destroy_flag}\' \'${config.tf_token}\'"
 
             results = readJSON file: 'data.json'
 
