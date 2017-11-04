@@ -24,7 +24,7 @@ def call(body) {
                 currentBuild.result = 'SUCCESS'
                 sh 'echo "Successfully Applied!"'
                 results.changes = False
-            } (else if results['status'] == "errored") {
+            } else if (results['status'] == "errored") {
                 currentBuild.result = 'FAILURE'
                 sh 'echo "Apply Failed!"'
                 results.changes = False
