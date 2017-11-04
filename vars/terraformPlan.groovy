@@ -5,6 +5,8 @@ def call(body) {
     body.delegate = config
     body()
 
+    print "${config.organisation}"
+
     node {
 
         stage ('Plan') {
