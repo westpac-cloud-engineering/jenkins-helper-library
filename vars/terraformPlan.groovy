@@ -20,18 +20,18 @@ def call(body) {
             def plan_info = readJSON file: 'data.json'
 
             if (plan_info['status'] == "unchanged") {
-                sh 'echo "Plan Succeeded: No Changes"'
+                print "Plan Succeeded: No Changes"
                 currentBuild.result = 'SUCCESS'
             }
             else if (plan_info['status'] == "failed") {
-                sh 'echo "Plan Failed: Logs Below"'
+                print "Plan Failed: Logs Below"
                 currentBuild.result = 'FAILURE'
             } else {
-                sh 'echo "Plan Succeeded: Changes"'
-                plan_info['changes'] = True
+                print "Plan Succeeded: Changes"
+                plan_info['changes'] = true
             }
 
-            sh 'echo "LOGS WILL APPEAR HERE PENDING TF 2 API FIX"' // REPLACE WHEN LOGGING API IS AVAILABLE
+            print "LOGS WILL APPEAR HERE PENDING TF 2 API FIX" // REPLACE WHEN LOGGING API IS AVAILABLE
 
             return plan_info
         }
