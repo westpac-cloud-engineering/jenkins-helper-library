@@ -5,7 +5,7 @@ def call(body) {
     body.delegate = config
     body()
 
-    stage ('Stage') {
+    stage ('Close Change') {
         print "Change ${config.change_details["id"]}: Successfully Closed"
     }
 
