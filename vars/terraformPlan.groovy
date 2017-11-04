@@ -5,7 +5,7 @@ def call(body) {
     body.delegate = config
     body()
 
-    print "from within config: ${config.org}"
+    print "from within config: ${config.organisation}"
 
     node {
 

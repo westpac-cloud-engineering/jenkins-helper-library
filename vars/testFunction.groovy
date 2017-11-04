@@ -7,7 +7,7 @@ def call(body) {
 
     // now build, based on the configuration provided
     print "This is a test of a global DSL"
-    print "Output: ${config.organisation}"
+    print "Output: ${config.org}"
 
     stage ('Stage') {
         print "This is a test of a global DSL"
