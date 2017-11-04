@@ -5,10 +5,11 @@ def call(body) {
     body.delegate = config
     body()
 
+    // now build, based on the configuration provided
     print "This is a test of a global DSL"
 
     stage name: 'Stage', concurrency: 1 {
         print "This is a test of a global DSL"
-        print "Output: ${config.testoutput}"
+        print "Output: ${config.testOutput}"
     }
 }
