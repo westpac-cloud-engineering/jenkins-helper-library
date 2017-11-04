@@ -11,11 +11,11 @@ def call(body) {
 
             // Download Terraform Helper Scripts
             sh 'echo "Getting Terraform Scripts"'
-            git url: 'https://github.com/Westpac/tfscripts'
+            git url: 'https://github.com/Westpac/cloud_deployment_helpers'
 
             // Creating Plan
-            sh 'pip3 install -r terraform/requirements.txt'
-            sh "set +e; python3 terraform/run_plan.py \'${config.organisation}\' \'${config.app_id}\' \'${config.workspace_name}\' \'${config.destroy_infrastructure}\' \'${config.atlas_token}\'"
+            sh 'pip3 install -r terraform_enterprise_2/run_jobs/requirements.txt'
+            sh "set +e; python3 terraform_enterprise_2/run_jobs/run_plan.py \'${config.organisation}\' \'${config.app_id}\' \'${config.workspace_name}\' \'${config.destroy_infrastructure}\' \'${config.atlas_token}\'"
 
             def plan_info = readJSON file: 'data.json'
 

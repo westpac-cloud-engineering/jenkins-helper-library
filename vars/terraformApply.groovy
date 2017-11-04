@@ -9,9 +9,13 @@ def call(body) {
 
         stage ('Apply') {
 
+            // Download Terraform Helper Scripts
+            sh 'echo "Getting Terraform Scripts"'
+            git url: 'https://github.com/Westpac/cloud_deployment_helpers'
+
             // Run Apply
-            sh 'pip3 install -r terraform/requirements.txt'
-            sh "set +e; python3 terraform/run_apply.py \'${config.organisation}\' \'${config.app_id}\' \'${config.workspace_name}\' \'${plan_info.props['run_id']}\' \'${config.destroy_infrastructure}\' \'${config.atlas_token}\'"
+            sh 'pip3 install -r terraform_enterprise_2/run_jobs/requirements.txt'
+            sh "set +e; python3 terraform_enterprise_2/run_jobs/run_apply.py \'${config.organisation}\' \'${config.app_id}\' \'${config.workspace_name}\' \'${plan_info.props['run_id']}\' \'${config.destroy_infrastructure}\' \'${config.atlas_token}\'"
 
             results = readJSON file: 'data.json'
 
