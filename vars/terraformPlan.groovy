@@ -5,6 +5,8 @@ def call(body) {
     body.delegate = config
     body()
 
+    print "\'${config.org}\' \'${config.app_id}\' \'${config.workspace}\' \'${config.destroy_flag}\' \'${config.tf_token}\'"
+
     node {
 
         stage ('Plan') {
