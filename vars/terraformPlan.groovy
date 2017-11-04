@@ -26,6 +26,9 @@ def call(body) {
             else if (plan_info['status'] == "failed") {
                 sh 'echo "Plan Failed: Logs Below"'
                 currentBuild.result = 'FAILURE'
+            } else {
+                sh 'echo "Plan Succeeded: Changes"'
+                plan_info['changes'] = True
             }
 
             sh 'echo "LOGS WILL APPEAR HERE PENDING TF 2 API FIX"' // REPLACE WHEN LOGGING API IS AVAILABLE
