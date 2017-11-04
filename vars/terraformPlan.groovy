@@ -5,8 +5,6 @@ def call(body) {
     body.delegate = config
     body()
 
-    print "\'${config.org}\' \'${config.app_id}\' \'${config.workspace}\' \'${config.destroy_flag}\' \'${config.tf_token}\'"
-
     node {
 
         stage ('Plan') {
@@ -21,11 +19,11 @@ def call(body) {
 
             def plan_info = readJSON file: 'data.json'
 
-            if (props['status'] == "unchanged") {
+            if (plan_info['status'] == "unchanged") {
                 sh 'echo "Plan Succeeded: No Changes"'
                 currentBuild.result = 'SUCCESS'
             }
-            else if (props['status'] == "failed") {
+            else if (plan_info['status'] == "failed") {
                 sh 'echo "Plan Failed: Logs Below"'
                 currentBuild.result = 'FAILURE'
             }
