@@ -10,7 +10,7 @@ def call(body) {
         print "Change against ${config.app_id} being raised"
 
         def change_details = [:]
-        change_details['id'] = "CRQ000000001"
+        change_details.id = "CRQ000000001"
 
         // RAISE CHANGE HERE
         print "Change ${change_details['id']}: Successfully Raised"
