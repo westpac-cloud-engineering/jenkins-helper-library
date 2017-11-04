@@ -8,7 +8,7 @@ def call(body) {
     // now build, based on the configuration provided
     print "This is a test of a global DSL"
 
-    stage name: 'Stage', concurrency: 1 {
+    stage ('Stage') {
         print "This is a test of a global DSL"
         print "Output: ${config.testOutput}"
     }
