@@ -5,8 +5,8 @@ def call(body) {
     body.delegate = config
     body()
 
-    node {
-        sh "echo \"Change ${config.change_details["id"]}: Successfully Closed\""
+    stage ('Stage') {
+        print "Change ${config.change_details["id"]}: Successfully Closed"
     }
 
 }

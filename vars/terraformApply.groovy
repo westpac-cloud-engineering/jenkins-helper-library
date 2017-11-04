@@ -7,7 +7,7 @@ def call(body) {
 
     node {
 
-        stage name: 'Apply', concurrency: 1 {
+        stage ('Apply') {
 
             // Run Apply
             sh 'pip3 install -r terraform/requirements.txt'

@@ -5,18 +5,21 @@ def call(body) {
     body.delegate = config
     body()
 
-    print "Change against ${config.app_id} being raised"
+    stage ('Raise Change') {
 
-    def change_details = [:]
-    change_details['id'] = "CRQ000000001"
+        print "Change against ${config.app_id} being raised"
 
-    // RAISE CHANGE HERE
-    print "Change ${change_details['id']}: Successfully Raised"
+        def change_details = [:]
+        change_details['id'] = "CRQ000000001"
 
-    // Only request approval on production environments - This logic will move to SNow
-    if config.production {
-        input message:'Approve deployment?'
+        // RAISE CHANGE HERE
+        print "Change ${change_details['id']}: Successfully Raised"
+
+        // Only request approval on production environments - This logic will move to SNow
+        if config.production {
+            input message:'Approve deployment?'
+        }
+
+        return change_details
     }
-
-    return change_details
 }

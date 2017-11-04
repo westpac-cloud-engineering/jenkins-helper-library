@@ -7,7 +7,7 @@ def call(body) {
 
     node {
 
-        stage name: 'Plan', concurrency: 1 {
+        stage ('Plan') {
 
             // Download Terraform Helper Scripts
             sh 'echo "Getting Terraform Scripts"'
