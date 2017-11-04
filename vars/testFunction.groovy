@@ -5,6 +5,7 @@ def call(body) {
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = config
     body()
-
-    print "Output: ${config.testoutput}"
+    stage name: 'Stage', concurrency: 1 {
+        print "Output: ${config.testoutput}"
+    }
 }
