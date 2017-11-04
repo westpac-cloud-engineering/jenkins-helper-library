@@ -16,7 +16,7 @@ def call(body) {
         print "Change ${change_details['id']}: Successfully Raised"
 
         // Only request approval on production environments - This logic will move to SNow
-        if config.production {
+        if (config.production) {
             input message:'Approve deployment?'
         }
 
