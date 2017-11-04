@@ -6,7 +6,7 @@ def call(body) {
     body()
 
     stage ('Close Change') {
-        print "Change ${config.change_details["id"]}: Successfully Closed"
+        print "Change ${config.change["id"]}: Successfully Closed"
     }
 
 }
