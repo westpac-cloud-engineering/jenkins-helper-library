@@ -7,6 +7,8 @@ def call(body) {
 
     stage ('Close Change') {
         print "Change ${config.change["id"]}: Successfully Closed"
+        currentBuild.result = 'SUCCESS'
+
     }
 
 }
