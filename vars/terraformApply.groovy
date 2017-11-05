@@ -23,14 +23,14 @@ def call(body) {
             if (results['status'] == "applied") {
                 currentBuild.result = 'SUCCESS'
                 sh 'echo "Successfully Applied!"'
-                results.changes = False
+                results.changes = false
             } else if (results['status'] == "errored") {
                 currentBuild.result = 'FAILURE'
                 sh 'echo "Apply Failed!"'
-                results.changes = False
+                results.changes = false
             } else {
                 sh 'echo "Changes Found!"'
-                results.changes = True
+                results.changes = true
             }
 
             sh 'echo "LOGS WILL APPEAR HERE PENDING TF 2 API FIX"' // REPLACE WHEN LOGGING API IS AVAILABLE
