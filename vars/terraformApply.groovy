@@ -10,7 +10,7 @@ def call(body) {
         stage ('Apply') {
 
             // Download Terraform Helper Scripts
-            sh 'echo "Getting Terraform Scripts"'
+            print 'echo "Getting Terraform Scripts"'
             git url: 'https://github.com/Westpac/cloud_deployment_helpers'
 
             // Run Apply
@@ -22,15 +22,10 @@ def call(body) {
 
             if (results['status'] == "applied") {
                 currentBuild.result = 'SUCCESS'
-                sh 'echo "Successfully Applied!"'
-                results.changes = False
-            } else if (results['status'] == "errored") {
-                currentBuild.result = 'FAILURE'
-                sh 'echo "Apply Failed!"'
-                results.changes = False
+                print 'echo "Successfully Applied!"'
             } else {
-                sh 'echo "Changes Found!"'
-                results.changes = True
+                currentBuild.result = 'FAILURE'
+                print 'echo "Apply Failed!"'
             }
 
             sh 'echo "LOGS WILL APPEAR HERE PENDING TF 2 API FIX"' // REPLACE WHEN LOGGING API IS AVAILABLE
