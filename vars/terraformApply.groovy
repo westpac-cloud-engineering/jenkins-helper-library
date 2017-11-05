@@ -26,8 +26,7 @@ def call(body) {
             } else {
                 currentBuild.result = 'FAILURE'
                 print 'echo "Apply Failed!"'
-            }
-
+            } 
             sh 'echo "LOGS WILL APPEAR HERE PENDING TF 2 API FIX"' // REPLACE WHEN LOGGING API IS AVAILABLE
         }
     }
