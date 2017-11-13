@@ -17,7 +17,7 @@ def call(body) {
 
             // Creating Plan
             sh 'pip3 install -r terraform_enterprise_2/run_jobs/requirements.txt'
-            sh "set +e; python3 terraform_enterprise_2/run_jobs/run_terraform_apply.py \'${config.app_id}\' \'${config.component_name}\' \'${config.environment}\' \'${config.destroy_flag}\'"
+            sh "set +e; python3 terraform_enterprise_2/run_jobs/run_terraform_plan.py \'${config.app_id}\' \'${config.component_name}\' \'${config.environment}\' \'${config.destroy_flag}\'"
 
             def plan_info = readJSON file: 'data.json'
 
