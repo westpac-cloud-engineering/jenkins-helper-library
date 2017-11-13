@@ -6,7 +6,7 @@ def call(body) {
     body.delegate = config
     body()
 
-    stage ('Raise Change') {
+    stage ('Get Credentials') {
         
         def credentialMap = withCredentials(
             [
