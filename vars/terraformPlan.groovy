@@ -13,7 +13,7 @@ def call(body) {
             sh 'echo "Getting Terraform Scripts"'
             git url: 'https://github.com/Westpac/cloud_deployment_helpers'
 
-            writeJSON file: 'secrets.json', json: config.credentials
+            writeJSON file: 'environment_variables.json', json: config.credentials
 
             // Creating Plan
             sh 'pip3 install -r terraform_enterprise_2/run_jobs/requirements.txt'
