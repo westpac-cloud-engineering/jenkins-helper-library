@@ -35,7 +35,6 @@ def call(body) {
             
             return credentialMap
         }
-        print(credentialMap)
-        return credentialMap
+        return readJSON text: credentialMap
     }
 }
