@@ -35,7 +35,7 @@ def call(body) {
             
             return credentialMap
         }
-        
+        print(credentialMap)
         return credentialMap
     }
 }
