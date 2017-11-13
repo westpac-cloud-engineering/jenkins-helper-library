@@ -1,4 +1,5 @@
-// TEMPORARY CREDENTIAL GATHERER FOR THE TERRAFORM ENTERPRISE 2 POC
+import groovy.json.JsonOutput
+
 def call(body) {
 
     def config = [:]
@@ -35,7 +36,7 @@ def call(body) {
             
             return credentialMap
         }
-        def jsonMap = readJSON text: credentialMap
+        def jsonMap = readJSON text: JsonOutput.toJson(credentialMap)
         return jsonMap
     }
 }
