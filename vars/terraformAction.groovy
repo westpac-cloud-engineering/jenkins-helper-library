@@ -14,7 +14,7 @@ def call(body) {
             // Download Terraform Helper Scripts
             print 'echo "Getting Terraform Scripts"'
             dir('helper_scripts') {
-                    git url: 'https://github.com/westpac-cloud-engineering/jenkins-helper-library'
+                    git url: 'https://github.com/westpac-cloud-engineering/terraform-pipeline-wrapper'
             }
 
             // Trigger Run
