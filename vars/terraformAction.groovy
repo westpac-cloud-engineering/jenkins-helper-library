@@ -37,7 +37,7 @@ def call(body) {
             if (results['attributes']['status'] == "applied") {
                 print "Successfully Applied!"
                 currentBuild.result = 'SUCCESS'
-            } else if results['attributes']['status'] == "planned"{
+            } else if (results['attributes']['status'] == "planned") {
                 print "Successfully Planned!"
                 currentBuild.result = 'SUCCESS'
             } else {
