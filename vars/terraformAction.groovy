@@ -19,7 +19,7 @@ def call(body) {
 
             // Trigger Run
             sh 'pip3 install -r helper_scripts/requirements.txt'
-            sh "set +e; python3 helper_scripts/run_terraform_apply.py \
+            sh "set +e; python3 helper_scripts/tf_run.py \
             \'${config.request_type}\' \
             \'${config.app_id}\' \
             \'${config.component_name}\' \
