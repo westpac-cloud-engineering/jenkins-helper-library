@@ -41,8 +41,7 @@ def call(body) {
                 print "Successfully Planned!"
                 currentBuild.result = 'SUCCESS'
             } else {
-                print "Failed Run!"
-                currentBuild.result = 'FAILURE'
+                error("Run Failed. See Terraform Log for details")
             }
 
             return results
