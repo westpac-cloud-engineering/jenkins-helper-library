@@ -11,6 +11,10 @@ def call(body) {
 
             print "Begin Terraform: ${config.request_type}" 
 
+            // Remove all old log files 
+            sh "rm -f *.log"
+            sh "rm -f *json"
+
             // Download Terraform Helper Scripts
             print 'echo "Getting Terraform Scripts"'
             dir('helper_scripts') {
