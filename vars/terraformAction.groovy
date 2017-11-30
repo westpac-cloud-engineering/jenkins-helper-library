@@ -29,6 +29,7 @@ def call(body) {
             \'${config.component_name}\' \
             \'${config.environment}\' \
             \'${config.atlas_token}\' \
+            \'${config.azure_secret}\' \
             \'${config.destroy}\' \
             \'${config.run_id}\' " 
 

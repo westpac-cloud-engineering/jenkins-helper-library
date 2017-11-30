@@ -27,11 +27,7 @@ def call(body) {
             ]
         ) {
             def credentialMap = [:]
-            credentialMap['environment_variables'] = [:]
-            credentialMap['environment_variables']['ARM_CLIENT_ID'] = env.AZURE_CLIENT_ID
-            credentialMap['environment_variables']['ARM_CLIENT_SECRET'] = env.AZURE_CLIENT_SECRET
-            credentialMap['environment_variables']['ARM_SUBSCRIPTION_ID'] = env.AZURE_SUBSCRIPTION_ID
-            credentialMap['environment_variables']['ARM_TENANT_ID'] = env.AZURE_TENANT_ID
+            credentialMap['azure_client_secret'] = env.AZURE_CLIENT_SECRET
             credentialMap['atlas_token'] = env.TERRAFORM_SECRET
             
             return credentialMap
