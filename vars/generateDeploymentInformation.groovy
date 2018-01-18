@@ -23,13 +23,8 @@ def call(body) {
                     $class: 'StringBinding', 
                     credentialsId: 'Terraform_Enterprise_POC_Token',
                     variable: 'TERRAFORM_SECRET'
-                ]
-                [ // Terraform Enterprise 2 Credentials
-                    $class: 'StringBinding', 
-                    credentialsId: 'Terraform_Enterprise_POC_Token',
-                    variable: 'TERRAFORM_SECRET'
-                ]
-                [ // Terraform Enterprise 2 Credentials
+                ],
+                [ // ServiceNow
                     $class: 'UsernamePasswordMultiBinding', 
                     credentialsId: 'jenkins_servicenow',
                     usernameVariable: 'JENKINS_SNOW_USERNAME',
@@ -37,23 +32,23 @@ def call(body) {
                 ]
             ]
         ) {
-            def credentialMap = [:]
+            def deployment_map = [:]
             
-            credentialMap['deployment']['id'] = config.app_id
-            credentialMap['deployment']['component_name'] = config.app_component_name
-            credentialMap['deployment']['environment'] = config.app_environment
+            deployment_map['deployment']['id'] = config.app_id
+            deployment_map['deployment']['component_name'] = config.app_component_name
+            deployment_map['deployment']['environment'] = config.app_environment
 
-            credentialMap['consul']['consul'] = "consul.australiaeast.cloudapp.azure.com"
-            credentialMap['consul']['port'] = "8500"
-            credentialMap['consul']['dc'] = "australiaeast"
-            credentialMap['consul']['token'] = ""
+            deployment_map['consul']['consul'] = "consul.australiaeast.cloudapp.azure.com"
+            deployment_map['consul']['port'] = "8500"
+            deployment_map['consul']['dc'] = "australiaeast"
+            deployment_map['consul']['token'] = ""
 
-            credentialMap['service_now']['url'] = "https://wbchpaaspoc.service-now.com/api/now/table/change_request"
-            credentialMap['service_now']['username'] = env.JENKINS_SNOW_USERNAME
-            credentialMap['service_now']['password'] = env.JENKINS_SNOW_PASSWORD
+            deployment_map['service_now']['url'] = "https://wbchpaaspoc.service-now.com/api/now/table/change_request"
+            deployment_map['service_now']['username'] = env.JENKINS_SNOW_USERNAME
+            deployment_map['service_now']['password'] = env.JENKINS_SNOW_PASSWORD
 
-            credentialMap['azure_secret'] = env.AZURE_CLIENT_SECRET
-            credentialMap['atlas_secret'] = env.TERRAFORM_SECRET
+            deployment_map['azure_secret'] = env.AZURE_CLIENT_SECRET
+            deployment_map['atlas_secret'] = env.TERRAFORM_SECRET
         
             return deployment_map
         }
