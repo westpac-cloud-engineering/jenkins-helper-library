@@ -15,6 +15,9 @@ def call(body) {
             sh "rm -f *.log"
             sh "rm -f *json"
 
+            // Generate Deployment File
+            writeJSON file: 'deployment_configuration.json', json: deploy_info
+
             // Download Terraform Helper Scripts
             print 'echo "Getting Terraform Scripts"'
             dir('helper_scripts') {
@@ -23,15 +26,9 @@ def call(body) {
 
             // Trigger Run
             sh 'pip3 install -r helper_scripts/requirements.txt'
-            sh "set +e; python3 helper_scripts/tf_run.py \
-            \'${config.request_type}\' \
-            \'${config.app_id}\' \
-            \'${config.component_name}\' \
-            \'${config.environment}\' \
-            \'${config.atlas_token}\' \
-            \'${config.azure_secret}\' \
-            \'${config.destroy}\' \
-            \'${config.run_id}\' " 
+            sh "set +e; python3 helper_scripts/tfe2_pipeline_wrapper/terraform_job.py \
+            \ --request_type '${config.request_type}\' \
+            \ --configuration_file deployment_configuration.json " 
 
             // Upload Outputs
             archiveArtifacts artifacts: '*.log', fingerprint: true
