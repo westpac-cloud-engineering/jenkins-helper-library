@@ -1,4 +1,4 @@
-import groovy.json.JsonOutput
+import groovy.json.JsonOutput.*
 
 def call(body) {
 
@@ -43,7 +43,7 @@ def call(body) {
             return deployment_map
         }
         def jsonMap = readJSON text: JsonOutput.toJson(deployment_map)
-        print prettyPrint(jsonMap)
+        print JsonOutput.prettyPrint(jsonMap)
         return jsonMap
     }
 }
