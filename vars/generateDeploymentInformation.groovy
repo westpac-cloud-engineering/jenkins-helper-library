@@ -43,7 +43,7 @@ def call(body) {
             return deployment_map
         }
         def jsonMap = readJSON text: JsonOutput.toJson(deployment_map)
-        print prettyPrint(jsonmap)
+        print prettyPrint(jsonMap)
         return jsonMap
     }
 }
