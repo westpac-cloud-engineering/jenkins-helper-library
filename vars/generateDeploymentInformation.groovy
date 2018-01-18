@@ -1,4 +1,4 @@
-import groovy.json.JsonOutput.*
+import groovy.json.JsonOutput
 
 def call(body) {
 
