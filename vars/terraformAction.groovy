@@ -25,9 +25,7 @@ def call(body) {
             }
 
             // Trigger Run
-            sh 'ls'
-            sh 'cd helper_scripts'
-            sh 'ls'
+            dir helper_scripts
             sh 'pip3 install -r requirements.txt'
             sh "set +e; python3 tfe2_pipeline_wrapper/terraform_job.py \
             --request_type '${config.request_type}\' \
