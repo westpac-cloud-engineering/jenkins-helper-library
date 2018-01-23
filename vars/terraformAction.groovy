@@ -16,7 +16,7 @@ def call(body) {
             sh "rm -f *json"
 
             // Generate Deployment File
-            writeJSON file: 'deployment_configuration.json', json: deploy_info
+            writeJSON file: 'deployment_configuration.json', json: config.deploy_info
 
             // Download Terraform Helper Scripts
             print 'echo "Getting Terraform Scripts"'
