@@ -25,6 +25,7 @@ def call(body) {
             }
 
             // Trigger Run
+            sh 'ls'
             sh 'cd helper_scripts'
             sh 'ls'
             sh 'pip3 install -r requirements.txt'
