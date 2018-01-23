@@ -25,8 +25,9 @@ def call(body) {
             }
 
             // Trigger Run
-            sh 'pip3 install -r helper_scripts/requirements.txt'
-            sh "set +e; python3 helper_scripts/tfe2_pipeline_wrapper/terraform_job.py \
+            sh 'cd helper_scripts'
+            sh 'pip3 install -r requirements.txt'
+            sh "set +e; python3 tfe2_pipeline_wrapper/terraform_job.py \
             --request_type '${config.request_type}\' \
             --configuration_file deployment_configuration.json " 
 
