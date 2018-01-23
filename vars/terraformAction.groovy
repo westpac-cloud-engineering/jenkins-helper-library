@@ -18,7 +18,7 @@ def call(body) {
             // Generate Deployment File
             writeJSON file: 'deployment_configuration.json', json: config.deploy_info
 
-            // Download Terraform Helper Scripts
+            // Download Terraform Helper Scripts #
             print 'echo "Getting Terraform Scripts"'
             dir('helper_scripts') {
                     git url: 'https://github.com/westpac-cloud-engineering/terraform-pipeline-wrapper'
