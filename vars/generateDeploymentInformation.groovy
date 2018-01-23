@@ -34,7 +34,7 @@ def call(body) {
         ) {
             def deployment_map = [:]
             
-            deployment_map['deployment'] = ['id': config.app_id, 'component_name': config.app_component_name, 'environment': config.app_environment, 'destroy_flag': config.destroy_flag ]
+            deployment_map['deployment'] = ['id': config.app_id, 'component_name': config.app_component_name, 'environment': config.app_environment, 'destroy_flag': config.destroy_flag, 'branch_or_tag': config.branch_or_tag ]
             deployment_map['consul'] = ['consul': "consul.australiaeast.cloudapp.azure.com", 'port': 8500, 'dc':"australiaeast","token":""]
             deployment_map['service_now'] = ['service_now': "https://wbchpaaspoc.service-now.com/api/now/table/change_request", 'username': env.JENKINS_SNOW_USERNAME, 'password':env.JENKINS_SNOW_PASSWORD]
             deployment_map['azure_secret'] = env.AZURE_CLIENT_SECRET

@@ -29,7 +29,6 @@ def call(body) {
             def credentialMap = [:]
             credentialMap['azure_client_secret'] = env.AZURE_CLIENT_SECRET
             credentialMap['atlas_token'] = env.TERRAFORM_SECRET
-            
             return credentialMap
         }
         def jsonMap = readJSON text: JsonOutput.toJson(credentialMap)
