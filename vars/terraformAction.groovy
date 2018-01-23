@@ -25,7 +25,7 @@ def call(body) {
             }
 
             // Trigger Run
-            withEnv('PYTHONPATH=PYTHONPATH:helper_scripts/'){
+            withEnv(['PYTHONPATH=PYTHONPATH:helper_scripts/']){
                 sh 'pip3 install -r helper_scripts/requirements.txt'
                 sh "set +e; python3 helper_scripts/tfe2_pipeline_wrapper/terraform_job.py \
                 --request_type '${config.request_type}\' \
