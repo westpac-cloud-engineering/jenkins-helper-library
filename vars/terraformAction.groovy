@@ -25,29 +25,30 @@ def call(body) {
             }
 
             // Trigger Run
-            dir helper_scripts
-            sh 'pip3 install -r requirements.txt'
-            sh "set +e; python3 tfe2_pipeline_wrapper/terraform_job.py \
-            --request_type '${config.request_type}\' \
-            --configuration_file deployment_configuration.json " 
+            dir('helper_scripts'){
+                sh 'pip3 install -r requirements.txt'
+                sh "set +e; python3 tfe2_pipeline_wrapper/terraform_job.py \
+                --request_type '${config.request_type}\' \
+                --configuration_file deployment_configuration.json " 
 
-            // Upload Outputs
-            archiveArtifacts artifacts: '*.log', fingerprint: true
-            archiveArtifacts artifacts: '*.json', fingerprint: true
+                // Upload Outputs
+                archiveArtifacts artifacts: '*.log', fingerprint: true
+                archiveArtifacts artifacts: '*.json', fingerprint: true
+                
+                // Interperate Results
+                results = readJSON file: 'data.json'
+                if (results['attributes']['status'] == "applied") {
+                    print "Successfully Applied!"
+                    currentBuild.result = 'SUCCESS'
+                } else if (results['attributes']['status'] == "planned") {
+                    print "Successfully Planned!"
+                    currentBuild.result = 'SUCCESS'
+                } else {
+                    error("Run Failed. See Terraform Log for details")
+                }
 
-            // Interperate Results
-            results = readJSON file: 'data.json'
-            if (results['attributes']['status'] == "applied") {
-                print "Successfully Applied!"
-                currentBuild.result = 'SUCCESS'
-            } else if (results['attributes']['status'] == "planned") {
-                print "Successfully Planned!"
-                currentBuild.result = 'SUCCESS'
-            } else {
-                error("Run Failed. See Terraform Log for details")
+                return results
             }
-
-            return results
         }
     }
 
