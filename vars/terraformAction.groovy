@@ -29,7 +29,8 @@ def call(body) {
                 sh 'pip3 install -r helper_scripts/requirements.txt'
                 sh "set +e; python3 helper_scripts/tfe2_pipeline_wrapper/terraform_job.py \
                 --request_type '${config.request_type}\' \
-                --configuration_file deployment_configuration.json " 
+                --configuration_file deployment_configuration.json \
+                --run_id '${config.run_id}'" 
 
                 // Upload Outputs
                 archiveArtifacts artifacts: '*.log', fingerprint: true
