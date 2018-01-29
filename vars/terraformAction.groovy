@@ -34,10 +34,9 @@ def call(body) {
 
                 // Upload Outputs
                 archiveArtifacts artifacts: '*.log', fingerprint: true
-                archiveArtifacts artifacts: '*.json', fingerprint: true
                 
                 // Interperate Results
-                results = readJSON file: 'data.json'
+                results = readJSON file: 'deployment_meta.json'
                 if (results['attributes']['status'] == "applied") {
                     print "Successfully Applied!"
                     currentBuild.result = 'SUCCESS'
@@ -47,6 +46,10 @@ def call(body) {
                 } else {
                     error("Run Failed. See Terraform Log for details")
                 }
+
+                // Remove files that didn't need archiving
+                sh "rm -f *.json"
+                sh "rm -f *.log"
 
                 return results
             }
