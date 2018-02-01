@@ -34,7 +34,8 @@ def call(body) {
 
                 // Upload Outputs
                 archiveArtifacts artifacts: '*.log', fingerprint: true
-                
+                stash includes '*.log'
+
                 // Interperate Results
                 results = readJSON file: 'deployment_meta.json'
                 if (results['attributes']['status'] == "applied") {
