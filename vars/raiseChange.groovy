@@ -30,7 +30,7 @@ def call(body) {
                 --action_type plan \
                 --configuration_file deployment_configuration.json \
                 --log_file plan.log
-                --sys_id '${config.run_id}'" 
+                --sys_id None" 
 
                 // Upload Outputs
                 results = readJSON file: 'deployment_meta.json'

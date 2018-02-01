@@ -29,7 +29,7 @@ def call(body) {
                 sh "set +e; python3 helper_scripts/tfe2_pipeline_wrapper/servicenow_change.py \
                 --action_type apply \
                 --configuration_file deployment_configuration.json \
-                --log_file plan.log
+                --log_file apply.log
                 --sys_id '${config.sys_id}'" 
 
                 // Upload Outputs
