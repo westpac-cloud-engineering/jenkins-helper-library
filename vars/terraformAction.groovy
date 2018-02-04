@@ -7,7 +7,7 @@ def call(body) {
 
     node {
 
-        stage ('Terraform Action') {
+        stage ("Terraform ${config.request_type}") {
 
             print "Begin Terraform: ${config.request_type}" 
 
