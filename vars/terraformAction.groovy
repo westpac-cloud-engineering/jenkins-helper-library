@@ -34,7 +34,7 @@ def call(body) {
 
                 // Upload Outputs
                 archiveArtifacts artifacts: '*.log', fingerprint: true
-                stash name 'logs', includes '*.log'
+                stash name: 'logs', includes: '*.log'
 
                 // Interperate Results
                 results = readJSON file: 'deployment_meta.json'
