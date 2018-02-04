@@ -33,7 +33,7 @@ def call(body) {
                 --sys_id None" 
 
                 // Upload Outputs
-                results = readJSON file: 'deployment_meta.json'
+                results = readJSON file: 'deployment_plan.json'
 
                 return results['result']['sys_id']
             }

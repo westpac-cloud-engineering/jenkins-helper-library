@@ -33,7 +33,7 @@ def call(body) {
                 --sys_id '${config.sys_id}'" 
 
                 // Upload Outputs
-                results = readJSON file: 'deployment_meta.json'
+                results = readJSON file: 'deployment_apply.json'
 
                 return results['result']['sys_id']
             }
